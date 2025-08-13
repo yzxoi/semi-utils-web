@@ -201,7 +201,7 @@ def main():
                 
                 # Show results
                 if processed_files:
-                    st.markdown('<div class="download-section">', unsafe_allow_html=True)
+                    
                     st.header("✅ 处理完成")
                     st.success(f"成功处理 {len(processed_files)} 张图片")
                     
