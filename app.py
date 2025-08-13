@@ -152,7 +152,7 @@ def main():
         config._data['base']['quality'] = quality
     
     # Main content area
-    st.markdown('<div class="upload-section">', unsafe_allow_html=True)
+    
     st.header("📁 上传图片")
     
     uploaded_files = st.file_uploader(
