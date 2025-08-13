@@ -1,0 +1,32 @@
+Semi-Utils Web
+Copyright 2025 [Your Name]
+
+This project is based on the original Semi-Utils desktop application:
+- Original project: https://github.com/leslievan/semi-utils
+- Original author: @leslievan (LeslieVan)
+- Original license: Apache License 2.0
+
+Third-party components and their licenses:
+
+1. Streamlit
+   - License: Apache License 2.0
+   - Source: https://github.com/streamlit/streamlit
+
+2. Pillow (PIL)
+   - License: HPND License
+   - Source: https://github.com/python-pillow/Pillow
+
+3. PyYAML
+   - License: MIT License
+   - Source: https://github.com/yaml/pyyaml
+
+4. exiftool
+   - License: GPL v1 + Artistic License 2.0
+   - Source: https://exiftool.org/
+
+5. Fonts:
+   - AlibabaPuHuiTi: Alibaba Font License
+   - Roboto: Apache License 2.0
+
+This project is licensed under the Apache License, Version 2.0.
+See LICENSE file for full license text. 
