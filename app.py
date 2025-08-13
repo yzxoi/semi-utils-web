@@ -98,6 +98,28 @@ def main():
     # Header
     st.markdown('<h1 class="main-header">🖼️ Semi-Utils 图片水印工具</h1>', unsafe_allow_html=True)
     st.markdown("### 在线批量添加水印、处理照片像素比、图像色彩和质量的工具")
+
+    # Add layout examples
+    st.subheader("布局效果展示")
+    with st.expander("点击查看不同布局效果"):
+        # Define image paths and captions
+        layout_images = [
+            ("images/1.jpeg", "normal"),
+            ("images/2.jpeg", "normal(Logo 居右)"),
+            ("images/3.jpeg", "normal(黑红配色)"),
+            ("images/4.jpeg", "normal(黑红配色，Logo 居右)"),
+            ("images/5.jpeg", "normal(自定义配置)"),
+            ("images/6.jpeg", "1:1填充"),
+            ("images/7.jpeg", "简洁"),
+            ("images/8.jpeg", "背景模糊"),
+            ("images/9.jpeg", "背景模糊+白框"),
+        ]
+        
+        # Display images in a 3-column layout
+        cols = st.columns(3)
+        for i, (image_path, caption) in enumerate(layout_images):
+            with cols[i % 3]:
+                st.image(image_path, caption=caption, use_container_width=True)
     
     # Sidebar for configuration
     with st.sidebar:
@@ -113,26 +135,7 @@ def main():
         )
 
         # Add layout examples
-        st.subheader("布局效果展示")
-        with st.expander("点击查看不同布局效果"):
-            # Define image paths and captions
-            layout_images = [
-                ("images/1.jpeg", "normal"),
-                ("images/2.jpeg", "normal(Logo 居右)"),
-                ("images/3.jpeg", "normal(黑红配色)"),
-                ("images/4.jpeg", "normal(黑红配色，Logo 居右)"),
-                ("images/5.jpeg", "normal(自定义配置)"),
-                ("images/6.jpeg", "1:1填充"),
-                ("images/7.jpeg", "简洁"),
-                ("images/8.jpeg", "背景模糊"),
-                ("images/9.jpeg", "背景模糊+白框"),
-            ]
-            
-            # Display images in a 3-column layout
-            cols = st.columns(3)
-            for i, (image_path, caption) in enumerate(layout_images):
-                with cols[i % 3]:
-                    st.image(image_path, caption=caption, use_container_width=True)
+        
         
         # Get the processor for selected layout
         layout_processor = layout_items_dict[layout_options[selected_layout]].processor
