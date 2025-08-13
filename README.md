@@ -1,14 +1,12 @@
 # Semi-Utils Web
 
-> 🖼️ 基于 Streamlit 构建的在线图片水印工具
+> 🖼️ 基于 Streamlit 构建的在线批量图片水印工具
 
-[![GitHub stars](https://img.shields.io/github/stars/leslievan/semi-utils)](https://github.com/leslievan/semi-utils/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/leslievan/semi-utils)](https://github.com/leslievan/semi-utils/network)
+[![GitHub stars](https://img.shields.io/github/stars/yzxoi/semi-utils-web)](https://github.com/yzxoi/semi-utils-web/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/yzxoi/semi-utils-web)](https://github.com/yzxoi/semi-utils-web/network)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 
-**这是一个用于给照片批量添加水印、处理照片像素比、图像色彩和质量的在线工具。**
-
-> 🌟 **新功能**: 现在支持在线使用！无需安装，直接在浏览器中处理图片。
+![](images/demo.png)
 
 ## 🌟 特性
 
@@ -25,8 +23,8 @@
 ### 在线使用 (推荐)
 
 1. **访问在线应用**
-   - 部署链接: [Streamlit Cloud 部署](https://share.streamlit.io)
-   - 或使用其他部署平台 (详见 [部署指南](DEPLOYMENT.md))
+   - 直接访问 DEMO (On Streamlit): [semi-utils.streamlit.app](https://semi-utils.streamlit.app/)
+   - 或使用其他部署平台自行部署 (详见 [部署指南](DEPLOYMENT.md))
 
 2. **上传图片**
    - 支持 JPG, PNG, BMP, TIFF 格式
@@ -46,7 +44,7 @@
 
 1. **克隆仓库**
    ```bash
-   git clone https://github.com/your-username/semi-utils.git
+   git clone https://github.com/yzxoi/semi-utils-web.git
    cd semi-utils
    ```
 
@@ -115,8 +113,6 @@ semi-utils/
 ├── config.yaml              # ⚙️ 配置文件
 ├── .streamlit/              # ⚙️ Streamlit 配置
 │   └── config.toml
-├── .github/workflows/       # 🔄 GitHub Actions
-│   └── deploy.yml
 ├── entity/                  # 🔧 核心业务逻辑
 ├── enums/                   # 📋 枚举定义
 ├── fonts/                   # 🔤 字体文件
@@ -135,7 +131,8 @@ semi-utils/
 1. **Fork 本仓库**到你的 GitHub 账号
 2. **注册 Streamlit Cloud**: 访问 [share.streamlit.io](https://share.streamlit.io)
 3. **连接仓库**并设置主文件为 `app.py`
-4. **点击部署**，获得公开链接
+4. **设定 Python 版本**为 3.12
+5. **点击部署**，获得公开链接
 
 ### 其他平台
 
@@ -165,14 +162,6 @@ global:
 ### 添加自定义 Logo
 1. 将 Logo 文件放入 `logos/` 目录
 2. 在 `config.yaml` 中配置品牌信息
-
-## 📊 测试
-
-运行测试脚本验证应用功能:
-
-```bash
-python test_web.py
-```
 
 ## 🤝 贡献
 
@@ -204,13 +193,17 @@ python test_web.py
 - **阿里巴巴普惠体**: 用于中文显示
 - **Roboto**: 用于英文显示
 
+### 辅助开发工具
+本项目在开发过程中，部分代码与文档撰写参考了 AI 辅助工具 的建议与生成内容，主要包括但不限于：
+- Cursor / Copilot 类编辑器辅助
+- ChatGPT（GPT-5 Thinking 系列）
+- Gemini CLI（2.5 Pro & Flash）。
+
+请务必在项目学习与使用过程中，知悉事实性偏差。
+
 ## 📞 支持
 
 - 📖 查看 [README_WEB.md](README_WEB.md) 了解详细使用
 - 🚀 查看 [DEPLOYMENT.md](DEPLOYMENT.md) 了解部署方法
-- 🐛 提交 [Issue](https://github.com/leslievan/semi-utils/issues) 报告问题
-- 💡 提交 [Pull Request](https://github.com/leslievan/semi-utils/pulls) 贡献代码
-
----
-
-**�� 享受在线图片水印处理的便利！**
+- 🐛 提交 [Issue](https://github.com/yzxoi/semi-utils-web/issues) 报告问题
+- 💡 提交 [Pull Request](https://github.com/yzxoi/semi-utils-web/pulls) 贡献代码
