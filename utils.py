@@ -18,7 +18,9 @@ elif shutil.which('exiftool') is not None:
     EXIFTOOL_PATH = shutil.which('exiftool')
     ENCODING = 'utf-8'
 else:
-    EXIFTOOL_PATH = Path('./exiftool/exiftool')
+    # Fix path for web deployment - use absolute path
+    current_dir = Path(__file__).parent
+    EXIFTOOL_PATH = current_dir / 'exiftool' / 'exiftool'
     ENCODING = 'utf-8'
 
 logger = logging.getLogger(__name__)
@@ -43,6 +45,15 @@ def get_exif(path) -> dict:
     """
     exif_dict = {}
     try:
+        # Check if exiftool exists and is executable
+        if not EXIFTOOL_PATH.exists():
+            logger.error(f'ExifTool not found at: {EXIFTOOL_PATH}')
+            return exif_dict
+        
+        if not os.access(EXIFTOOL_PATH, os.X_OK):
+            logger.error(f'ExifTool not executable at: {EXIFTOOL_PATH}')
+            return exif_dict
+        
         output_bytes = subprocess.check_output([EXIFTOOL_PATH, '-d', '%Y-%m-%d %H:%M:%S%3f%z', path])
         output = output_bytes.decode('utf-8', errors='ignore')
 
@@ -68,6 +79,10 @@ def get_exif(path) -> dict:
             exif_dict[key] = value_clean
     except Exception as e:
         logger.error(f'get_exif error: {path} : {e}')
+        # Add more detailed error information
+        logger.error(f'ExifTool path: {EXIFTOOL_PATH}')
+        logger.error(f'Path exists: {EXIFTOOL_PATH.exists()}')
+        logger.error(f'Path is executable: {os.access(EXIFTOOL_PATH, os.X_OK) if EXIFTOOL_PATH.exists() else False}')
 
     return exif_dict
 

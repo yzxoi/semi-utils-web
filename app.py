@@ -152,51 +152,28 @@ def main():
         config._data['base']['quality'] = quality
     
     # Main content area
-    col1, col2 = st.columns([2, 1])
+    st.markdown('<div class="upload-section">', unsafe_allow_html=True)
+    st.header("📁 上传图片")
     
-    with col1:
-        st.markdown('<div class="upload-section">', unsafe_allow_html=True)
-        st.header("📁 上传图片")
-        
-        uploaded_files = st.file_uploader(
-            "选择要处理的图片文件",
-            type=['jpg', 'jpeg', 'png', 'bmp', 'tiff'],
-            accept_multiple_files=True,
-            help="支持 JPG, PNG, BMP, TIFF 格式"
-        )
-        
-        if uploaded_files:
-            st.success(f"已上传 {len(uploaded_files)} 张图片")
-            
-            # Show preview of uploaded images
-            st.subheader("📸 图片预览")
-            preview_cols = st.columns(min(3, len(uploaded_files)))
-            for idx, file in enumerate(uploaded_files):
-                with preview_cols[idx % 3]:
-                    image = Image.open(file)
-                    st.image(image, caption=file.name, use_column_width=True)
-        
-        st.markdown('</div>', unsafe_allow_html=True)
+    uploaded_files = st.file_uploader(
+        "选择要处理的图片文件",
+        type=['jpg', 'jpeg', 'png', 'bmp', 'tiff'],
+        accept_multiple_files=True,
+        help="支持 JPG, PNG, BMP, TIFF 格式"
+    )
     
-    with col2:
-        st.markdown('<div class="config-section">', unsafe_allow_html=True)
-        st.header("🎨 当前设置")
+    if uploaded_files:
+        st.success(f"已上传 {len(uploaded_files)} 张图片")
         
-        st.write(f"**布局:** {selected_layout}")
-        if 'watermark' in layout_options[selected_layout]:
-            st.write(f"**Logo:** {'启用' if config.has_logo_enabled() else '禁用'}")
-            if config.has_logo_enabled():
-                st.write(f"**Logo 位置:** {config._data['layout']['logo_position']}")
-        
-        st.write(f"**白边:** {'启用' if config.has_white_margin_enabled() else '禁用'}")
-        if config.has_white_margin_enabled():
-            st.write(f"**白边宽度:** {config.get_white_margin_width()}%")
-        
-        st.write(f"**阴影:** {'启用' if config.has_shadow_enabled() else '禁用'}")
-        st.write(f"**字体大小:** {config._data['base']['font_size']}")
-        st.write(f"**输出质量:** {config.get_quality()}%")
-        
-        st.markdown('</div>', unsafe_allow_html=True)
+        # Show preview of uploaded images
+        st.subheader("📸 图片预览")
+        preview_cols = st.columns(min(3, len(uploaded_files)))
+        for idx, file in enumerate(uploaded_files):
+            with preview_cols[idx % 3]:
+                image = Image.open(file)
+                st.image(image, caption=file.name, use_container_width=True)
+    
+    st.markdown('</div>', unsafe_allow_html=True)
     
     # Process button
     if uploaded_files:
@@ -234,7 +211,7 @@ def main():
                     for idx, (file_path, original_name) in enumerate(processed_files):
                         with preview_cols[idx % 3]:
                             image = Image.open(file_path)
-                            st.image(image, caption=f"处理后: {original_name}", use_column_width=True)
+                            st.image(image, caption=f"处理后: {original_name}", use_container_width=True)
                     
                     # Download options
                     st.subheader("📥 下载选项")
