@@ -97,10 +97,10 @@ def process_single_image(image_file, config_instance, layout_processor):
 def main():
     # Header
     st.markdown('<h1 class="main-header">🖼️ Semi-Utils 图片水印工具</h1>', unsafe_allow_html=True)
-    st.markdown("### 在线批量添加水印、处理照片像素比、图像色彩和质量的工具")
+    st.markdown("<h4 style='text-align: center;'>在线批量添加水印、处理照片像素比、图像色彩和质量的工具</h4>", unsafe_allow_html=True)
 
     # Add layout examples
-    st.subheader("布局效果展示")
+    st.subheader("🎨 布局效果展示")
     with st.expander("点击查看不同布局效果"):
         # Define image paths and captions
         layout_images = [
