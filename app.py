@@ -175,6 +175,11 @@ def main():
         # Quality setting
         quality = st.slider("输出质量", 50, 100, config.get_quality())
         config._data['base']['quality'] = quality
+
+    # Sponsor section
+    st.sidebar.markdown("---")
+    st.sidebar.subheader("支持我们")
+    st.sidebar.image("images/reward_wx.jpg", caption="微信扫码支持", use_container_width=True)
     
     # Main content area
     
