@@ -79,7 +79,8 @@ def process_single_image(image_file, config_instance, layout_processor):
         container = ImageContainer(Path(tmp_path))
         
         # Process image
-        layout_processor.process(container)
+                    # Process image
+            final_processor_chain.process(container)
         
         # Save processed image
         output_path = f"processed_{image_file.name}"
@@ -139,6 +140,14 @@ def main():
         
         # Get the processor for selected layout
         layout_processor = layout_items_dict[layout_options[selected_layout]].processor
+
+        # Create a processing chain
+        final_processor_chain = ProcessorChain()
+        final_processor_chain.add(layout_processor)
+
+        # Conditionally add white margin processor
+        if config.has_white_margin_enabled():
+            final_processor_chain.add(PureWhiteMarginProcessor(config))
         
         # Logo settings (only for watermark layouts)
         if 'watermark' in layout_options[selected_layout]:
@@ -220,7 +229,7 @@ def main():
                     status_text.text(f"正在处理: {file.name}")
                     
                     # Process the image
-                    output_path = process_single_image(file, config, layout_processor)
+                    output_path = process_single_image(file, config, final_processor_chain)
                     if output_path:
                         processed_files.append((output_path, file.name))
                     
