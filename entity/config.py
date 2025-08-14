@@ -215,8 +215,7 @@ class Config(object):
         return self._data['layout']['logo_enable']
 
     def is_logo_left(self):
-        if self._data['layout']['logo_position'] == 'left':
-            return True
+        return self._data['layout']['logo_position'] == 'left'
 
     def set_logo_left(self):
         self._data['layout']['logo_position'] = 'left'
