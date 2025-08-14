@@ -106,9 +106,9 @@ class WatermarkProcessor(ProcessorComponent):
 
     def __init__(self, config: Config):
         super().__init__(config)
-        # 默认值
-        self.logo_position = 'left'
-        self.logo_enable = True
+        # Initialize from config
+        self.logo_position = 'left' if self.config.is_logo_left() else 'right'
+        self.logo_enable = self.config.has_logo_enabled()
         self.bg_color = '#ffffff'
         self.line_color = GRAY
         self.font_color_lt = '#212121'
